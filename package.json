@@ -1,13 +1,14 @@
 {
   "name": "is-file-protected",
-  "version": "0.0.2-beta",
+  "version": "0.0.3-beta",
   "description": "A library to check if various file types are encrypted.",
-  "main": "dist/app.ts",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "dev": "nodemon",
-    "start": "tsc && node dist/app.js",
-    "lint": "eslint . --ext .ts"
+    "start": "tsc && node dist/index.js",
+    "lint": "eslint . --ext .ts",
+    "deploy": "npm version patch && npm publish"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
   "dependencies": {
     "adm-zip": "^0.5.14",
     "mammoth": "^1.8.0",
-    "pdf-lib": "^1.17.1"
+    "pdf-lib": "^1.17.1",
+    "typedoc": "^0.26.3"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.5",
