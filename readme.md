@@ -9,6 +9,26 @@ import { checkFileEncrypted } from "is-file-protected";
 const isFileEncrypted = await checkFileEncrypted(filePath);
 
 if (!isFileEncrypted) {
-  // do something
+  // file not protected
 }
+
+// file protected
 ```
+
+### File supported
+
+- PDF
+- DOCX
+- XLSX
+- PPTX
+- PPT (use msoffcrypto-tool)
+- DOC (use msoffcrypto-tool)
+- XLS (use msoffcrypto-tool)
+
+### File supported (Coming soon)
+
+- ZIP
+- RAR
+- 7Z
+- TAR
+- GZIP
