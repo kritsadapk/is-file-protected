@@ -78,7 +78,7 @@ async function checkPPTXEncrypted(filePath: string): Promise<boolean> {
   }
 }
 
-export async function checkFileEncrypted(filePath: string): Promise<void> {
+async function checkFileEncrypted(filePath: string): Promise<void> {
   const extension = filePath.split(".").pop()?.toLowerCase();
 
   switch (extension) {
@@ -120,6 +120,8 @@ export async function checkFileEncrypted(filePath: string): Promise<void> {
       console.log(`File type ${extension} not supported.`);
   }
 }
+
+module.exports = checkFileEncrypted;
 
 // เรียกใช้ฟังก์ชันหลักพร้อมระบุเส้นทางของไฟล์ ZIP ที่ต้องการตรวจสอบ
 // const zipFilePath = "path/to/your/file.zip"; // เปลี่ยนเส้นทางไฟล์ ZIP ที่ต้องการตรวจสอบ
