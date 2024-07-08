@@ -24,14 +24,14 @@
     "url": "https://github.com/kritsadapk/is-file-protected/issues"
   },
   "homepage": "https://github.com/kritsadapk/is-file-protected#readme",
-  "dependencies": {
-    "adm-zip": "^0.5.14",
-    "mammoth": "^1.8.0",
+  "dependencies": { 
+    "officeparser": "^4.1.1",
     "pdf-lib": "^1.17.1",
     "typedoc": "^0.26.3"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.5",
+    "@types/unzipper": "^0.10.9",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2"
   }
