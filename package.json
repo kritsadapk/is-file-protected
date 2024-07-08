@@ -1,6 +1,6 @@
 {
   "name": "is-file-protected",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "description": "A library to check if various file types are encrypted.",
   "main": "dist/index.js",
   "scripts": {
