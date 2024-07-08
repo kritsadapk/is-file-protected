@@ -1,0 +1,21 @@
+# Exclude all source files and tests
+src/
+tests/
+
+# Exclude configuration files
+*.config.js
+*.env
+
+# Exclude build scripts and local development files
+build/
+*.log
+
+# Exclude local development environment files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Exclude documentation files
+README.md
+LICENSE
