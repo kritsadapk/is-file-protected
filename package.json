@@ -1,0 +1,33 @@
+{
+  "name": "is-file-protected",
+  "version": "0.0.2-beta",
+  "description": "A library to check if various file types are encrypted.",
+  "main": "dist/app.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon",
+    "start": "tsc && node dist/app.js",
+    "lint": "eslint . --ext .ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kritsadapk/is-file-protected.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kritsadapk/is-file-protected/issues"
+  },
+  "homepage": "https://github.com/kritsadapk/is-file-protected#readme",
+  "dependencies": {
+    "adm-zip": "^0.5.14",
+    "mammoth": "^1.8.0",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.5",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2"
+  }
+}
