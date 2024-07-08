@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/kritsadapk/is-file-protected.git"
   },
-  "keywords": [],
+  "keywords": ["file","password"],
   "author": "",
   "license": "MIT",
   "bugs": {
