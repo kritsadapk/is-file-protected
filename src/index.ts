@@ -6,7 +6,7 @@ import util from "util";
 
 const execPromise = util.promisify(exec);
 
-const checkPDFEncrypted = async (filePath) => {
+const checkPDFEncrypted = async (filePath: string) => {
   const pdfBytes = fs.readFileSync(filePath);
   try {
     const pdfDoc = await PDFDocument.load(pdfBytes);
@@ -16,7 +16,7 @@ const checkPDFEncrypted = async (filePath) => {
   }
 };
 
-const isOfficeFileEncrypted = async (filePath: string | Buffer) => {
+const isOfficeFileEncrypted = async (filePath: string) => {
   try {
     await officeParser.parseOfficeAsync(filePath);
     return false;
@@ -26,7 +26,7 @@ const isOfficeFileEncrypted = async (filePath: string | Buffer) => {
   }
 };
 
-const isOfficeFileEncryptedWithMsoffcrypto = async (filePath) => {
+const isOfficeFileEncryptedWithMsoffcrypto = async (filePath: string) => {
   const command = `msoffcrypto-tool -i "${filePath}" -o /dev/null -t`;
   try {
     const { stderr } = await execPromise(command);
@@ -37,7 +37,7 @@ const isOfficeFileEncryptedWithMsoffcrypto = async (filePath) => {
   }
 };
 
-const checkFileEncrypted = async (filePath) => {
+const checkFileEncrypted = async (filePath: string) => {
   const extension = filePath.split(".").pop()?.toLowerCase();
 
   switch (extension) {
