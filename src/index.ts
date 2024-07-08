@@ -3,7 +3,7 @@ import * as fs from "fs";
 import { PDFDocument } from "pdf-lib";
 import mammoth from "mammoth";
 
-async function checkPDFEncrypted(filePath: string): Promise<boolean> {
+const checkPDFEncrypted = async (filePath: string): Promise<boolean> => {
   const pdfBytes = fs.readFileSync(filePath);
   try {
     const pdfDoc = await PDFDocument.load(pdfBytes);
@@ -12,9 +12,9 @@ async function checkPDFEncrypted(filePath: string): Promise<boolean> {
     console.error("Error reading PDF:", error);
     return false;
   }
-}
+};
 
-async function checkDOCXEncrypted(filePath: string): Promise<boolean> {
+const checkDOCXEncrypted = async (filePath: string): Promise<boolean> => {
   try {
     const result = await mammoth.extractRawText({ path: filePath });
     return !result.value.includes("Encryption");
@@ -22,9 +22,9 @@ async function checkDOCXEncrypted(filePath: string): Promise<boolean> {
     console.error("Error reading DOCX:", error);
     return false;
   }
-}
+};
 
-async function checkXLSXEncrypted(filePath: string): Promise<boolean> {
+const checkXLSXEncrypted = async (filePath: string): Promise<boolean> => {
   try {
     const zip = new AdmZip(filePath);
     const zipEntries = zip.getEntries();
@@ -53,9 +53,9 @@ async function checkXLSXEncrypted(filePath: string): Promise<boolean> {
     console.error("Error reading XLSX:", error);
     return false;
   }
-}
+};
 
-async function checkPPTXEncrypted(filePath: string): Promise<boolean> {
+const checkPPTXEncrypted = async (filePath: string): Promise<boolean> => {
   try {
     const zip = new AdmZip(filePath);
     const xmlFiles = zip
@@ -76,9 +76,9 @@ async function checkPPTXEncrypted(filePath: string): Promise<boolean> {
     console.error("Error reading PPTX:", error);
     return false;
   }
-}
+};
 
-async function checkFileEncrypted(filePath: string): Promise<void> {
+const checkFileEncrypted = async (filePath: string): Promise<boolean> => {
   const extension = filePath.split(".").pop()?.toLowerCase();
 
   switch (extension) {
@@ -89,16 +89,15 @@ async function checkFileEncrypted(filePath: string): Promise<void> {
           pdfEncrypted ? "not encrypted" : "encrypted"
         }.`
       );
-      break;
+      return pdfEncrypted;
     case "docx":
-    case "doc":
       const docxEncrypted = await checkDOCXEncrypted(filePath);
       console.log(
         `DOCX file ${filePath} is ${
           docxEncrypted ? "not encrypted" : "encrypted"
         }.`
       );
-      break;
+      return docxEncrypted;
     case "xlsx":
       const xlsxEncrypted = await checkXLSXEncrypted(filePath);
       console.log(
@@ -106,7 +105,7 @@ async function checkFileEncrypted(filePath: string): Promise<void> {
           xlsxEncrypted ? "not encrypted" : "encrypted"
         }.`
       );
-      break;
+      return xlsxEncrypted;
     case "pptx":
     case "ppt":
       const pptxEncrypted = await checkPPTXEncrypted(filePath);
@@ -115,14 +114,13 @@ async function checkFileEncrypted(filePath: string): Promise<void> {
           pptxEncrypted ? "not encrypted" : "encrypted"
         }.`
       );
-      break;
+      return pptxEncrypted;
     default:
       console.log(`File type ${extension} not supported.`);
+      return false;
   }
-}
+};
 
-module.exports = checkFileEncrypted;
-
-// เรียกใช้ฟังก์ชันหลักพร้อมระบุเส้นทางของไฟล์ ZIP ที่ต้องการตรวจสอบ
-// const zipFilePath = "path/to/your/file.zip"; // เปลี่ยนเส้นทางไฟล์ ZIP ที่ต้องการตรวจสอบ
-// checkFileEncrypted(zipFilePath);
+module.exports = {
+  checkFileEncrypted,
+};
