@@ -1,6 +1,6 @@
 {
   "name": "is-file-protected",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A library to check if various file types are encrypted.",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/kritsadapk/is-file-protected.git"
   },
-  "keywords": ["file","password"],
+  "keywords": [
+    "file",
+    "password"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
