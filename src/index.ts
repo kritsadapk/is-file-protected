@@ -20,8 +20,8 @@ const isOfficeFileEncrypted = async (filePath: string | Buffer) => {
   try {
     await officeParser.parseOfficeAsync(filePath);
     return false;
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
     return true;
   }
 };
@@ -32,7 +32,7 @@ const isOfficeFileEncryptedWithMsoffcrypto = async (filePath) => {
     const { stderr } = await execPromise(command);
     return stderr.includes("encrypted");
   } catch (error) {
-    console.error(err);
+    console.error(error);
     return true;
   }
 };
